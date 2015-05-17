@@ -5,7 +5,6 @@ import binary_conversions
 
 def bin_xor(bin1, bin2):
     bin3 = []
-    print(type(bin1), bin2)
     for byte1, byte2 in zip(bin1, bin2):
         bin3.append(byte1 ^ byte2)
     return bytearray(bin3)
