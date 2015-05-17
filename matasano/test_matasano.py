@@ -34,6 +34,19 @@ class test_xor(unittest.TestCase):
         expected = b'179'
         self.assertNotEqual(xor.hex_xor(hex1, hex2), expected)
 
+    '''Challenge 1, Set 3'''
+    def test_key_xor_success(self):
+        bin1 = binary_conversions.hex_to_binary(b'1c0111001f010100061a024b53535009181c')
+        key = 1
+        expected = binary_conversions.hex_to_binary(b'1d0010011e000001071b034a52525108191d')
+        self.assertEqual(xor.key_xor(bin1, key), expected)
+
+    def test_key_xor_failure(self):
+        bin1 = binary_conversions.hex_to_binary(b'1c0111001f010100061a024b53535009181c')
+        key = 1
+        expected = binary_conversions.hex_to_binary(b'1d0000')
+        self.assertNotEqual(xor.key_xor(bin1, key), expected)
+
 
 if __name__ == '__main__':
     unittest.main()

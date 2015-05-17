@@ -14,3 +14,11 @@ def hex_xor(hex1, hex2):
     bin1 = binary_conversions.hex_to_binary(hex1)
     bin2 = binary_conversions.hex_to_binary(hex2)
     return binary_conversions.binary_to_hex(bin_xor(bin1, bin2))
+
+
+def key_xor(binary, key):
+    output = []
+    for byte in binary:
+        output.append(byte ^ key)
+    return bytearray(output)
+
