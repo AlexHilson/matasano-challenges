@@ -21,4 +21,3 @@ def key_xor(binary, key):
     for byte in binary:
         output.append(byte ^ key)
     return bytearray(output)
-
