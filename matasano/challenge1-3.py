@@ -5,14 +5,6 @@ import binary_conversions
 import xor
 
 
-def one_char_hex_xor(hex_in):
-    binary = binary_conversions.hex_to_binary(hex_in)
-    xors = []
-    for key in range(256):
-        xors.append(xor.key_xor(binary, key))
-    return xors
-
-
 def english_check(binary_in):
     with open('./resources/letter_frequencies.json') as inf:
         letter_frequencies = json.load(inf)
@@ -26,5 +18,5 @@ def english_check(binary_in):
     return value
 
 hex_in = b'1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736'
-xors = one_char_hex_xor(hex_in)
+xors = xor.one_char_hex_xor(hex_in)
 print(sorted(xors, key=english_check, reverse=True)[0])

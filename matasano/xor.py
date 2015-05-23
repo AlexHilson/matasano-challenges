@@ -21,3 +21,11 @@ def key_xor(binary, key):
     for byte in binary:
         output.append(byte ^ key)
     return bytearray(output)
+
+
+def one_char_hex_xor(hex_in):
+    binary = binary_conversions.hex_to_binary(hex_in)
+    xors = []
+    for key in range(256):
+        xors.append(key_xor(binary, key))
+    return xors
