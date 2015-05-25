@@ -13,7 +13,7 @@ value = 0
 for hex_in in hexs:
     xors = xor.one_char_hex_xor(hex_in.strip())
     for char in xors:
-        new_value = utilities.english_check(char)
+        new_value = utilities.english_check(char['decrypted'])
         if new_value > value:
             best_xor = char
             value = new_value
