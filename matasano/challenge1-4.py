@@ -9,13 +9,9 @@ import utilities
 with open('./resources/set1-challenge4.txt') as inf:
     hexs = inf.readlines()
 
-value = 0
+decrypted = []
 for hex_in in hexs:
     xors = xor.one_char_hex_xor(hex_in.strip())
-    for char in xors:
-        new_value = utilities.english_check(char['decrypted'])
-        if new_value > value:
-            best_xor = char
-            value = new_value
+    decrypted += xors
 
-print(best_xor)
+print(sorted(decrypted, key = lambda key: utilities.english_check(key['decrypted']))[-1])
