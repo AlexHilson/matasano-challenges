@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import binary_conversions
 import xor
 import utilities
 

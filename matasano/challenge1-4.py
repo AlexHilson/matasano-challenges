@@ -1,10 +1,9 @@
 
 #!/usr/bin/env python3
 
-import json
-import binary_conversions
 import xor
 import utilities
+
 
 with open('./resources/set1-challenge4.txt') as inf:
     hexs = inf.readlines()
