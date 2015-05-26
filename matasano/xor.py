@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import binary_conversions
+import itertools
 
 
 def bin_xor(bin1, bin2):
@@ -31,3 +32,12 @@ def one_char_hex_xor(hex_in):
                      'decrypted': key_xor(binary, key),
                      'encrypted': hex_in })
     return xors
+
+
+def repeating_key_bin_xor(bin_in, key):
+    '''
+    Expects bin_in and key as bytearrays.
+    '''
+    keys = itertools.cycle(key)
+    bytes_keys = [(x, next(keys)) for x in bin_in]
+    return bytearray([byte[0] ^ byte[1] for byte in bytes_keys])
