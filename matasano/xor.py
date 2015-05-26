@@ -5,10 +5,7 @@ import itertools
 
 
 def bin_xor(bin1, bin2):
-    bin3 = []
-    for byte1, byte2 in zip(bin1, bin2):
-        bin3.append(byte1 ^ byte2)
-    return bytearray(bin3)
+    return bytearray([byte1 ^ byte2 for byte1, byte2 in zip(bin1, bin2)])
 
 
 def hex_xor(hex1, hex2):
@@ -18,20 +15,15 @@ def hex_xor(hex1, hex2):
 
 
 def key_xor(binary, key):
-    output = []
-    for byte in binary:
-        output.append(byte ^ key)
-    return bytearray(output)
+    return bytearray([byte ^ key for byte in binary])
 
 
 def one_char_hex_xor(hex_in):
     binary = binary_conversions.hex_to_binary(hex_in)
-    xors = []
-    for key in range(256):
-        xors.append({'key': chr(key),
-                     'decrypted': key_xor(binary, key),
-                     'encrypted': hex_in })
-    return xors
+    return [{'key': chr(key),
+             'decrypted': key_xor(binary, key),
+             'encrypted': hex_in}
+             for key in range(256)]
 
 
 def repeating_key_bin_xor(bin_in, key):
