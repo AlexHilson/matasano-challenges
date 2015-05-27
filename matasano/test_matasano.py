@@ -3,6 +3,7 @@
 import unittest
 import binary_conversions
 import xor
+import utilities
 
 
 class test_hex_to_base64(unittest.TestCase):
@@ -59,6 +60,14 @@ class test_xor(unittest.TestCase):
         key = bytearray(b'ECI')
         expected = b'0b3637272a2b2e63622c2e69692a23693a2a3c6324202d623d63343c2a26226324272765272a282b2f20430a652e2c652a3124333a653e2b2027630c692b20283165286326302e27282f'
         self.assertNotEqual(binary_conversions.binary_to_hex(xor.repeating_key_bin_xor(bin_in, key)), expected)
+
+class test_hamming_distance(unittest.TestCase):
+
+    def test_hamming_dist_success(self):
+        str1 = 'this is a test'
+        str2 = 'wokka wokka!!!'
+        expected = 37
+        self.assertEqual(utilities.hamming_distance(str1, str2), expected)
 
 
 if __name__ == '__main__':
